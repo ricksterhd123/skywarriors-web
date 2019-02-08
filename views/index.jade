@@ -1,7 +1,9 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  for (let x = 0; x <= players.length - 1; x++)
-  li= players[x]
+    h1 Sky warriors MTA:SA server
+    h2 Players online (#{playerInfo.length})
+    - for (var x = 0; x <= playerInfo.length - 1; x++)
+        li= playerInfo[x].name
+    script(src='/javascripts/map.js')
+    

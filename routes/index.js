@@ -1,24 +1,21 @@
 var express = require('express');
 var router = express.Router();
 const Client = require('mtasa').Client;
-
-async function getPlayersOnline(){
-    let players = null;
-
+const mta = new Client("35.247.225.180", 22005, "webapi", "test1234")
+async function getPlayersOnline(res){
     try {
-        players = await mta.call("skywarriors-api", getPlayersOnline);
+        let playerInfo = await mta.call("skywarriors", "getPlayersOnline");
+        //players = JSON.parse(players);
+        console.log(`Playesr: ${playerInfo[0]}`);
+        res.render('index', { playerInfo: playerInfo});
     } catch (err){
         console.error(`Something went wrong! ${err}`);
     }
-
-    return players;
 }
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    let players = getPlayersOnline();
-    console.log(`Players online: ${players}`);
-    res.render('index', { title: 'Express' , players: players});
+    getPlayersOnline(res);
 });
 
 module.exports = router;
