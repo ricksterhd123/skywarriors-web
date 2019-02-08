@@ -13,8 +13,6 @@
   "formation": {
   },
   "name": "skywarriors-web",
-  "scripts": {
-    "postdeploy": "bin/www"
-  },
+  "scripts": {},
   "stack": "heroku-18"
 }
