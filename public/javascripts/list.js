@@ -6,7 +6,7 @@ function createPlayerList(playerInfo){
     var listItems = document.getElementsByClassName('listItem');
     if (listTitle){ document.body.removeChild(listTitle); }
     if (listItems.length > 0){
-        for (let i = 0; i <= listItems.length; i++) {
+        for (let i = 0; i <= listItems.length - 1; i++) {
             document.body.removeChild(listItems[0]);
         }
     }

@@ -5,8 +5,9 @@ var timer = null;
 
 function updatePlayerInfo(){
     if (http.readyState == XMLHttpRequest.DONE){
+        console.log(http.status);
         if (http.status == 200){
-            let newPlayerInfo = JSON.parse(http.responseText);
+            let newPlayerInfo = http.responseText;
             if (playerInfo == newPlayerInfo) return;
 
             playerInfo = newPlayerInfo;
