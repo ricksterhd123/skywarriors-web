@@ -2,8 +2,6 @@ extends layout
 
 block content
     h1 Sky warriors MTA:SA server
-    h2 Players online (#{playerInfo.length})
-    - for (var x = 0; x <= playerInfo.length - 1; x++)
-        li= playerInfo[x].name
+    script(src='/javascripts/list.js')
     script(src='/javascripts/map.js')
-    
+    script(src='/javascripts/ajax.js')
