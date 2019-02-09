@@ -14,7 +14,6 @@ async function getPlayersOnline(res){
         res.send(playerInfo);
     } catch (err){
         console.error(`Something went wrong! ${err}`);
-        res.status(404).send();
     }
 }
 
