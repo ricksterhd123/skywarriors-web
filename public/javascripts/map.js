@@ -1,4 +1,6 @@
 let canvas = document.createElement('canvas');
+let hidden = false;
+canvas.id = "map";
 let ctx = canvas.getContext("2d");
 canvas.width = 500;
 canvas.height = 500;
@@ -25,7 +27,7 @@ function worldCoordsToCanvas(position){
 
     let x = (position[0] / mX) * (width*0.5) + width*0.5
     let y = (position[1] / mY) * (-height*0.5) + height*0.5
-    console.log(`(${x}, ${y})`);
+    //console.log(`(${x}, ${y})`);
     return {x: x, y: y};
 }
 
@@ -33,10 +35,28 @@ function drawPlayers(playerInfo){
     let img = new Image();
     img.src = '/images/gtasa.png';
     img.onload = function (){
+        if (hidden) hideCanvas(false);
+
         ctx.fillRect(0, 0, 500, 500);
         ctx.drawImage(img, 0, 0, 500, 500 * img.height / img.width);
         for (let i = 0; i <= playerInfo.length - 1; i++){
             drawPlayer(worldCoordsToCanvas(playerInfo[i].position), playerInfo[i].colour);
         }
+    }
+}
+
+function hideCanvas(bool){
+    let c = document.getElementById('map');
+    if (c && bool) {
+        document.body.removeChild(c);
+        hidden = true;
+    } else if (!c && !bool) {
+        canvas = document.createElement('canvas');
+        canvas.id = "map";
+        ctx = canvas.getContext("2d");
+        canvas.width = 500;
+        canvas.height = 500;
+        document.body.appendChild(canvas);
+        hidden = false;
     }
 }

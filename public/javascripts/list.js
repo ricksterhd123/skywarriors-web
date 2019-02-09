@@ -1,10 +1,15 @@
 /**
  *  Create a list of players from player info object
  */
-function createPlayerList(playerInfo){
+
+function clearPlayerList(){
     var div = document.getElementById('playerList');
     if (div) { document.body.removeChild(div); }
+}
 
+function createPlayerList(playerInfo){
+    clearPlayerList();
+    
     var div = document.createElement('div');
     div.id = "playerList";
 
