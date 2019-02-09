@@ -7,7 +7,7 @@ function updatePlayerInfo(){
     if (http.readyState == XMLHttpRequest.DONE){
         console.log(http.status);
         if (http.status == 200){
-            let newPlayerInfo = http.responseText;
+            let newPlayerInfo = JSON.parse(http.responseText);
             if (playerInfo == newPlayerInfo) return;
 
             playerInfo = newPlayerInfo;
