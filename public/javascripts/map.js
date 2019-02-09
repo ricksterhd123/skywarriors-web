@@ -35,7 +35,7 @@ function drawPlayers(playerInfo){
     let img = new Image();
     img.src = '/images/gtasa.png';
     img.onload = function (){
-        if (hidden) hideCanvas(false);
+        if (hidden) {hideCanvas(false);}
 
         ctx.fillRect(0, 0, 500, 500);
         ctx.drawImage(img, 0, 0, 500, 500 * img.height / img.width);

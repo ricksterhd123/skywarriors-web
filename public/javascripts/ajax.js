@@ -2,15 +2,23 @@
 var http = null;
 var playerInfo = null;
 var timer = null;
+var error = false;
 
 function errMsg(){
-    if (document.getElementById('errMsg')) return;
-    clearPlayerList();
+    if (error) return;
     hideCanvas(true);
+    clearPlayerList();
     let errMsg = document.createElement('p');
     errMsg.id = "errMsg";
     errMsg.innerHTML = "appears to be offline...";
     document.body.appendChild(errMsg);
+    error = true;
+}
+
+function clearErrMsg(){
+    if (!error) return;
+    let msg = document.getElementById('errMsg');
+    document.body.removeChild(msg);
 }
 
 function updatePlayerInfo(){
@@ -21,16 +29,18 @@ function updatePlayerInfo(){
             if (response == "e") {
                 errMsg();
                 return false;
+            }else {
+                clearErrMsg();
             }
-
             // parse response into json
             let newPlayerInfo = JSON.parse(response);
             if (playerInfo == newPlayerInfo) return false;
 
             // render player list and draw canvas
             playerInfo = newPlayerInfo;
-            createPlayerList(playerInfo);
             drawPlayers(playerInfo);
+            createPlayerList(playerInfo);
+
         } else{
             console.log(`Something went wrong, status code: ${http.status}`);
         }
