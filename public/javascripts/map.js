@@ -2,8 +2,16 @@ let canvas = document.createElement('canvas');
 let hidden = false;
 canvas.id = "map";
 let ctx = canvas.getContext("2d");
-canvas.width = 500;
-canvas.height = 500;
+let innerWidth = Math.max(window.innerWidth, 600);
+let innerHeight = Math.max(window.innerHeight, 600);
+
+if (innerWidth < innerHeight){
+    canvas.width = window.innerWidth-100;
+    canvas.height = canvas.width;
+}else {
+    canvas.height = window.innerHeight-100;
+    canvas.width = canvas.height
+}
 document.body.appendChild(canvas);
 
 var rgbToHex = function (rgb) {
@@ -37,8 +45,8 @@ function drawPlayers(playerInfo){
     img.onload = function (){
         if (hidden) {hideCanvas(false);}
 
-        ctx.fillRect(0, 0, 500, 500);
-        ctx.drawImage(img, 0, 0, 500, 500 * img.height / img.width);
+        //ctx.fillRect(0, 0, 500, 500);
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
         for (let i = 0; i <= playerInfo.length - 1; i++){
             drawPlayer(worldCoordsToCanvas(playerInfo[i].position), playerInfo[i].colour);
         }
