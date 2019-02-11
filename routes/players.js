@@ -10,7 +10,7 @@ const mta = new Client("35.247.225.180", 22005, "webapi", "test1234")
  */
 async function getPlayersOnline(res){
     try {
-        let playerInfo = await mta.call("skywarriors", "getPlayersOnline");
+        let playerInfo = await mta.call("skywarriors-api", "getPlayersOnline");
         res.send(playerInfo);
     } catch (err){
         console.error(`Something went wrong! ${err}`);
