@@ -6,6 +6,16 @@ patch:
   SNYK-JS-LODASH-450202:
     - mtasa > request-promise > request-promise-core > lodash:
         patched: '2020-04-28T12:58:45.830Z'
+    - snyk > @snyk/dep-graph > lodash:
+        patched: '2020-04-28T13:05:24.984Z'
+    - snyk > @snyk/snyk-cocoapods-plugin > @snyk/dep-graph > lodash:
+        patched: '2020-04-28T13:05:24.984Z'
+    - snyk > snyk-mvn-plugin > @snyk/java-call-graph-builder > lodash:
+        patched: '2020-04-28T13:05:24.984Z'
+    - snyk > snyk-nuget-plugin > dotnet-deps-parser > lodash:
+        patched: '2020-04-28T13:05:24.984Z'
+    - snyk > @snyk/snyk-cocoapods-plugin > @snyk/cocoapods-lockfile-parser > @snyk/dep-graph > lodash:
+        patched: '2020-04-28T13:05:24.984Z'
   'npm:uglify-js:20151024':
     - jade > transformers > uglify-js:
         patched: '2020-04-28T12:58:45.830Z'
